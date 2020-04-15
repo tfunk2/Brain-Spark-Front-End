@@ -1,0 +1,142 @@
+html, body {
+    margin:0;
+    padding:0;
+    background-color: rgb(226, 226, 226);
+}
+
+#main-logo {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-image: url('https://images.pexels.com/photos/158665/banner-header-paper-crumpled-158665.jpeg?cs=srgb&dl=banner-crumpled-header-paper-158665.jpg&fm=jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    animation-duration: 3s;
+    animation-name: slidein;
+    position: relative;
+}
+
+#app-title {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 56px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    color: rgb(36, 5, 107);
+    animation-duration: 2s;
+    animation-name: slidein;
+}
+
+#app-subtitle {
+    font-family: 'Permanent Marker', cursive;
+    color: rgb(36, 5, 107);
+    font-size: 24pt;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    animation-duration: 1s;
+    animation-name: slidein;
+}
+
+#welcome-forms-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* align-items: baseline; */
+}
+
+#login-form, #create-user-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+    align-items: center;
+    margin-top: 50px;
+}
+
+input[type=text], input[type=password] {
+    width: 350px;
+    padding: 14px 20px;
+    margin: 6px 0;
+    display: inline-block;
+    border: 3px solid rgb(247, 243, 50);
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 12pt;
+}
+
+input[type=submit] {
+    width: 250px;
+    background-color: rgb(36, 5, 107);
+    color: rgb(255, 255, 255);
+    padding: 1px 5px;
+    margin: 8px 0;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 16pt;
+    font-family: 'Permanent Marker', cursive;
+    box-shadow: 0 6px rgb(168, 168, 168);
+}
+
+.button:focus {
+    outline: none;
+}
+
+.button:hover {
+    background-color: rgb(36, 5, 107);
+}
+
+.button:active {
+  background-color: rgb(47, 0, 156);
+  box-shadow: 0 3px #666;
+  transform: translateY(4px);
+}
+
+#or {
+    margin-top: 100px;
+    margin: 50px;
+    font-family: 'Permanent Marker', cursive;
+    color: rgb(36, 5, 107);
+    margin-top: 85px;
+
+}
+  
+@keyframes slidein {
+from {
+    margin-top: -500px;
+    width: 300%; 
+}
+
+to {
+    margin-left: 0%;
+    /* width: 100%; */
+}
+}
+
+#joke-outer-container {
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
+#joke-inner-container {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.joke {
+    font-family: 'Permanent Marker', cursive;
+}
+
+#welcome-joke-punchline {
+    color: rgb(36, 5, 107);
+}
+#welcome-label {
+    color: rgb(36, 5, 107);
+}
