@@ -4,11 +4,14 @@ const loginForm = document.querySelector('#login-form')
 const createUserForm = document.querySelector('#create-user-form')
 const createUserButton = document.querySelector('#create-user-button')
 const createUserFormContainer = document.querySelector('#create-user-form-container')
+const loginFormContainer = document.querySelector('#login-form-container')
+
+
+// Displays the random joke at the bottom of the page
 
 fetch('http://localhost:3000/jokes/')
     .then(response => response.json())
     .then(jokes => displayWelcomeJoke(jokes))
-
 
 function displayWelcomeJoke (jokes) {
     const randomJokeIndex = Math.floor(Math.random() * 200)
@@ -16,6 +19,9 @@ function displayWelcomeJoke (jokes) {
     welcomeJokeSetup.innerText = randomJoke.setup
     welcomeJokePunchline.innerHTML = randomJoke.punchline
 }
+
+
+// Adds event listener and other functionality for incorrect/correct entries
 
 createUserForm.addEventListener('submit', () => {
     event.preventDefault()
@@ -36,10 +42,41 @@ createUserForm.addEventListener('submit', () => {
         },
         body: JSON.stringify(userObject)
     }).then(response => response.json())
-    .then(result => console.log(result))
+    .then(result => handleUserCreation(result))
 
-    successfulUserCreation()
+    function handleUserCreation(result) {
+        if (result.username) {
+            if (result.username[0] === "Username must be between 6 and 14 characters long.") {
+                unsuccessfulUserCreation(result.username[0])
+            } else if (result.username[0] === `${usernameInput} has already been taken.`) {
+                unsuccessfulUserCreation(result.username[0])
+            } else if (result.username[0] === "can't be blank") {
+                unsuccessfulUserCreation(result.username[0])
+            } else {
+                successfulUserCreation()
+            }
+        } else {
+            if (result.password_digest[0] === "Password must be between 6 and 14 characters long.") {
+                unsuccessfulUserCreation(result.password_digest[0])
+            } else {
+                successfulUserCreation()
+            }
+        }
+    }
+    createUserForm.reset()
 })
+
+function unsuccessfulUserCreation(error_message) {
+    
+        const incorrectInputLabel = document.createElement('label')
+
+        incorrectInputLabel.for = "create-user-form"
+        incorrectInputLabel.innerText = error_message
+        incorrectInputLabel.id = "user-created-label"
+        
+        createUserFormContainer.prepend(incorrectInputLabel)
+    
+}
 
 function successfulUserCreation() {
     const userCreatedLabel = document.createElement('label')
@@ -50,6 +87,9 @@ function successfulUserCreation() {
     
     createUserFormContainer.prepend(userCreatedLabel)
 }
+
+
+// Adds event listener to login form submit, and adds functionality to incorrect entries
 
 loginForm.addEventListener('submit', () => {
     event.preventDefault()
@@ -67,15 +107,32 @@ loginForm.addEventListener('submit', () => {
     function searchByUsername(users){
         for (var i=0; i < users.length; i++) {
             if (users[i].username === usernameInput) {
-                checkPassword(users[i])
+               return checkPassword(users[i])
             }
         }
+        checkPassword("Incorrect Username or Password")
     }
 
     function checkPassword(user){
-        if (user.password_digest === passwordInput) {
+        if (user === "Incorrect Username or Password") {
+            wrongUserOrPassword()
+        } else if (user.password_digest !== passwordInput) {
+            wrongUserOrPassword()
+        } else if (user.password_digest === passwordInput) {
             window.location.href = `userHomePage.html?id=${user.id}`
+        } else {
+            console.log("something went wrong in checkPassword")
         }
+    }
+
+    function wrongUserOrPassword() {
+        const wrongUserOrPasswordLabel = document.createElement('label')
+
+        wrongUserOrPasswordLabel.for = "login-form"
+        wrongUserOrPasswordLabel.innerText = "Incorrect Username or Password"
+        wrongUserOrPasswordLabel.id = "login-label"
+        
+        loginFormContainer.prepend(wrongUserOrPasswordLabel)
     }
 
 })

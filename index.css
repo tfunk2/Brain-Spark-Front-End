@@ -146,13 +146,13 @@ align-items: center;
     outline: none;
 }
 
-#user-created-label{
+#user-created-label, #login-label{
     position: absolute;
     margin-top: 20px;
 
 }
 
-#create-user-form-container {
+.form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
