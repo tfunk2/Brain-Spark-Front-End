@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap">
     <link rel="stylesheet" href="userHomePage.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Home Page</title>
+    <title>Brain Spark Home Page</title>
     <script defer src="userHomePage.js"></script>
 </head>
 <body>
@@ -21,17 +22,29 @@
             <h2 id="app-subtitle">Jump-start Your Mind</h2>
         </div>
     </header>
+
+    <div id="user-section-outer-container">
+        <section id="user-section"></section>
+    </div>
+
     <section id="facts-container">
         <div id="facts-inner-container">
             <span id="date-fact-container" class="fact-header">
-                <h2>fact here</h2>
-                <p>jadhjkasjdfhashfjhaadhjkasjdfhashfjhaadhjkasjdfhashfjhaadhjkasjdfhashfjhaadhjkasjdfhashfjhas</p>
+                <h2 id="date" class="fact"></h2>
+                <p id="random-date-fact" class="fact"></p>
             </span>
             <span id="number-fact-container" class="fact-header">
-                <h2>fact here</h2>
-                <p>jadhjkhjghjghjghjgs</p>
+                <h2 id="number" class="fact"></h2>
+                <p id="random-number-fact" class="fact"></p>
             </span>
         </div>
     </section>
+    <div id="outer-trivia-container">
+        <section id="trivia-section">
+            <form id="trivia-form">
+                <select name="selected_answer" id="answers-dropdown"></select>
+            </form>
+        </section>
+    </div>
 </body>
 </html>

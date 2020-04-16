@@ -30,16 +30,23 @@ header {
     flex-direction: column;
 }
 
-#facts-container {
+#facts-container, #user-section-outer-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    
 }
 
-#facts-inner-container {
+#facts-inner-container, #user-section {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     text-align: center;
+    font-family: 'Permanent Marker', cursive;
+    color: rgb(36, 5, 107);
+}
+
+.fact {
+    max-width: 320px;
 }
 
 #app-title {
@@ -72,4 +79,174 @@ header {
         margin-left: 0%;
         /* width: 100%; */
     }
-    }
+}
+
+#total-sparks {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 56px;
+    margin: 0;
+}
+
+#user-welcome {
+    font-size: 30px;
+    margin-top: 0;
+}
+
+#user-welcome-container {
+    border: solid;
+    background-image: url('https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v748-toon-25_1_1.jpg?w=800&dpr=1&fit=default&crop=default&auto=format&fm=pjpg&q=75&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=2e8d9c564074f759b9ea8f4b10b1d4db');
+    background-size: cover;
+    background-repeat: none;
+    padding: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+    max-width: 704px;
+    min-width: 704px;
+}
+
+#username {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 50px;
+    margin: 0;
+}
+
+#date-fact-container, #number-fact-container {
+    border: solid;
+    background-image: url("https://images.pexels.com/photos/268342/pexels-photo-268342.jpeg?cs=srgb&dl=banner-crumpled-graph-paper-header-268342.jpg&fm=jpg");
+    background-size: cover;
+    background-repeat: none;
+    border-color: rgb(36, 5, 107);
+    /* padding: 0px; */
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+    margin-left: 9px;
+    margin-right: 9px;
+}
+
+#random-date-fact, #random-number-fact {
+    font-size: 20px;
+}
+
+#date, #number, #spark-label {
+    font-size: 26px;
+    margin-top: 8px;
+    margin-bottom: 2px;
+}
+
+#todays-number, #todays-date {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 50px;
+}
+
+#trivia-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid;
+    border-color: rgb(36, 5, 107);
+    background-image: url('https://images.pexels.com/photos/268346/pexels-photo-268346.jpeg?cs=srgb&dl=banner-crumpled-header-lined-paper-268346.jpg&fm=jpg');
+    background-size: cover;
+    background-repeat: none;
+    padding: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20;
+    min-width: 704px;
+    max-width: 704px;
+}
+
+#outer-trivia-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+#spark-worth {
+    margin: 1px;
+    font-family: 'Permanent Marker', cursive;
+    color: rgb(36, 5, 107);
+    font-size: 24pt;
+    
+}
+
+#difficulty {
+    margin: 1px;
+    font-family: 'Permanent Marker', cursive;
+    color: rgb(36, 5, 107);
+    font-size: 28pt;
+}
+
+#category {
+    margin: 1px;
+    font-family: 'Permanent Marker', cursive;
+    color: rgb(36, 5, 107);
+    font-size: 36pt;
+}
+
+#trivia-question {
+    margin: 1px;
+    font-family: 'Permanent Marker', cursive;
+    color: black;
+    font-size: 20pt;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.sparks {
+    align-self: center;
+    font-family: 'Bungee Shade', cursive;
+    font-size: 50px;
+}
+
+#spark-worth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type=submit] {
+    width: 250px;
+    background-color: rgb(36, 5, 107);
+    color: rgb(255, 255, 255);
+    padding: 1px 5px;
+    margin: 8px 0;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 16pt;
+    font-family: 'Permanent Marker', cursive;
+    box-shadow: 0 6px rgb(168, 168, 168);
+}
+
+.button:focus {
+    outline: none;
+}
+
+.button:hover {
+    background-color: rgb(36, 5, 107);
+}
+
+.button:active {
+  background-color: rgb(47, 0, 156);
+  box-shadow: 0 3px #666;
+  transform: translateY(4px);
+}
+
+/* The container must be positioned relative: */
+#answers-dropdown {
+    position: relative;
+    font-family: 'Exo 2', sans-serif;
+    max-width: 250px;
+    font-size: 20px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+#answers-dropdown:focus {
+    outline: none;
+}
