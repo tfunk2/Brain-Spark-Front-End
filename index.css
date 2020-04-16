@@ -65,7 +65,7 @@ input[type=text], input[type=password] {
     padding: 14px 20px;
     margin: 6px 0;
     display: inline-block;
-    border: 3px solid rgb(247, 243, 50);
+    border: 3px solid rgb(255, 252, 63);
     border-radius: 10px;
     box-sizing: border-box;
     font-size: 12pt;
@@ -139,4 +139,22 @@ align-items: center;
 }
 #welcome-label {
     color: rgb(36, 5, 107);
+    margin-bottom: 0px;
+}
+
+.non-button-input:focus {
+    outline: none;
+}
+
+#user-created-label{
+    position: absolute;
+    margin-top: 20px;
+
+}
+
+#create-user-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Permanent Marker', cursive;
 }

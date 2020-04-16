@@ -1,0 +1,75 @@
+html, body {
+    margin:0;
+    padding:0;
+    background-color: rgb(226, 226, 226);
+}
+
+#main-logo {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-image: url('https://images.pexels.com/photos/158665/banner-header-paper-crumpled-158665.jpeg?cs=srgb&dl=banner-crumpled-header-paper-158665.jpg&fm=jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    animation-duration: 3s;
+    animation-name: slidein;
+    position: relative;
+    align-items: flex-start;
+}
+
+.fact-header {
+    flex-direction: column;
+}
+
+#facts-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#facts-inner-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#app-title {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 56px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    color: rgb(36, 5, 107);
+    animation-duration: 2s;
+    animation-name: slidein;
+}
+
+#app-subtitle {
+    font-family: 'Permanent Marker', cursive;
+    color: rgb(36, 5, 107);
+    font-size: 24pt;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    animation-duration: 1s;
+    animation-name: slidein;
+}
+
+@keyframes slidein {
+    from {
+        margin-top: -500px;
+        /* width: 300%;  */
+    }
+    
+    to {
+        margin-left: 0%;
+        /* width: 100%; */
+    }
+    }
