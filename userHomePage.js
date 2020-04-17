@@ -175,21 +175,29 @@ function checkAnswer(event) {
     event.preventDefault()
     const formData = new FormData(triviaForm)
     const answerInput = formData.get('selected_answer')
+    const wrongOrRight = document.createElement('h3')
+    wrongOrRight.id = "wrong-or-right"
     
     console.log("answer input", answerInput, randomTriviaQuestion.correct_answer)
     if (answerInput !== randomTriviaQuestion.correct_answer) {
         
+        wrongOrRight.innerHTML = `That wasn't right! <div id="previous-answer">Previous question's correct Answer: ${randomTriviaQuestion.correct_answer}</div>`
+        triviaForm.append(wrongOrRight)
         console.log("wrong")
     } else if (answerInput === randomTriviaQuestion.correct_answer) {
-        // need to make this pop a message up saying correct answer!
-        // also need to make it change questions
         let sparksToAdd
         if (randomTriviaQuestion.difficulty == "easy") {
             sparksToAdd = 50
+            wrongOrRight.innerText = "Correct! +50 Sparks!"
+            triviaForm.append(wrongOrRight)
         } else if (randomTriviaQuestion.difficulty == "medium"){
             sparksToAdd = 100
+            wrongOrRight.innerText = "Correct! +100 Sparks!"
+            triviaForm.append(wrongOrRight)
         } else if (randomTriviaQuestion.difficulty == "hard") {
             sparksToAdd = 200
+            wrongOrRight.innerText = "Correct! +200 Sparks!"
+            triviaForm.append(wrongOrRight)
         }
 
         addSparkScore(sparksToAdd) 
