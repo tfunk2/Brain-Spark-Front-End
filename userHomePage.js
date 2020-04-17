@@ -29,6 +29,7 @@ const categoryH3 = document.createElement('h3')
 const sparkWorthH3 = document.createElement('h3')
 const triviaQuestion = document.createElement('p')
 const checkAnswerInput = document.createElement('input')
+const leaderboardLink = document.createElement('a')
 
 
 fetch(`http://localhost:3000/users/${id}`)
@@ -45,8 +46,11 @@ function displayUserInfo(user) {
     sparkLabel.id = "spark-label"
     totalSparks.innerText = user.lifetime_score
     totalSparks.id = "total-sparks"
+    leaderboardLink.innerText = "Leaderboard"
+    leaderboardLink.href = `http://localhost:3001/leaderboard.html?id=${id}`
+    leaderboardLink.id = "leaderboard-link"
 
-    userWelcomeContainer.append(userWelcome, sparkLabel, totalSparks)
+    userWelcomeContainer.append(userWelcome, sparkLabel, totalSparks, leaderboardLink)
     userSection.append(userWelcomeContainer)
 }
 
@@ -156,16 +160,15 @@ function generateTriviaDropdown(trivia) {
         const answerInput = formData.get('selected_answer')
 
         function generateNewTriviaQuestion() {
-            fetch('http://localhost:3000/trivia')
-                .then(response => response.json())
-                .then(trivia => generateTriviaDropdown(trivia))
+            generateTriviaDropdown(trivia)
         }
-
+        console.log(answerInput)
         if (answerInput !== randomTriviaQuestion.correct_answer) {
             difficultyH3.remove()
             categoryH3.remove()
             sparkWorthH3.remove()
             triviaQuestion.remove()
+            triviaForm.reset()
 
             generateNewTriviaQuestion()
             console.log("wrong")
@@ -183,9 +186,10 @@ function generateTriviaDropdown(trivia) {
 
             fetch(`http://localhost:3000/users/${id}`)
                 .then(response => response.json())
-                .then(user => addSparkScore(user, sparksToAdd))     
-                
-                generateNewTriviaQuestion()
+                .then(user => addSparkScore(user, sparksToAdd))  
+
+            triviaForm.reset()
+            generateNewTriviaQuestion()
             
         }
         

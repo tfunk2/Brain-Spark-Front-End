@@ -85,6 +85,7 @@ header {
     font-family: 'Bungee Shade', cursive;
     font-size: 56px;
     margin: 0;
+    margin-bottom: 20px;
 }
 
 #user-welcome {
@@ -103,6 +104,7 @@ header {
     margin-top: 20px;
     max-width: 704px;
     min-width: 704px;
+    padding-bottom: 30px;
 }
 
 #username {
@@ -210,7 +212,7 @@ header {
     align-items: center;
 }
 
-input[type=submit] {
+input[type=submit], #leaderboard-link {
     width: 250px;
     background-color: rgb(36, 5, 107);
     color: rgb(255, 255, 255);
@@ -249,4 +251,12 @@ input[type=submit] {
 
 #answers-dropdown:focus {
     outline: none;
+}
+
+#leaderboard-link {
+    /* margin-top: 26px; */
+    border-radius: 3px;
+    padding: 8px;
+    text-decoration: none;
+
 }

@@ -5,6 +5,9 @@ const createUserForm = document.querySelector('#create-user-form')
 const createUserButton = document.querySelector('#create-user-button')
 const createUserFormContainer = document.querySelector('#create-user-form-container')
 const loginFormContainer = document.querySelector('#login-form-container')
+const userCreatedLabel = document.createElement('label')
+const previousLabel = document.getElementById('user-created-label')
+
 
 
 // Displays the random joke at the bottom of the page
@@ -46,6 +49,7 @@ createUserForm.addEventListener('submit', () => {
 
     function handleUserCreation(result) {
         if (result.username) {
+
             if (result.username[0] === "Username must be between 6 and 14 characters long.") {
                 unsuccessfulUserCreation(result.username[0])
             } else if (result.username[0] === `${usernameInput} has already been taken.`) {
@@ -67,20 +71,19 @@ createUserForm.addEventListener('submit', () => {
 })
 
 function unsuccessfulUserCreation(error_message) {
-    
-        const incorrectInputLabel = document.createElement('label')
+        if (previousLabel) {
+            previousLabel.remove()
+        }
 
-        incorrectInputLabel.for = "create-user-form"
-        incorrectInputLabel.innerText = error_message
-        incorrectInputLabel.id = "user-created-label"
+        userCreatedLabel.for = "create-user-form"
+        userCreatedLabel.innerText = error_message
+        userCreatedLabel.id = "user-created-label"
         
-        createUserFormContainer.prepend(incorrectInputLabel)
+        createUserFormContainer.prepend(userCreatedLabel)
     
 }
 
 function successfulUserCreation() {
-    const userCreatedLabel = document.createElement('label')
-
     userCreatedLabel.for = "create-user-form"
     userCreatedLabel.innerText = "Username Successfully Created!"
     userCreatedLabel.id = "user-created-label"

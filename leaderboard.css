@@ -1,0 +1,156 @@
+html, body {
+    margin:0;
+    padding:0;
+    background-color: rgb(226, 226, 226);
+}
+
+#main-logo {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-image: url('https://images.pexels.com/photos/158665/banner-header-paper-crumpled-158665.jpeg?cs=srgb&dl=banner-crumpled-header-paper-158665.jpg&fm=jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    animation-duration: 3s;
+    animation-name: slidein;
+    position: relative;
+    align-items: flex-start;
+}
+
+#app-title {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 56px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    color: rgb(36, 5, 107);
+    animation-duration: 2s;
+    animation-name: slidein;
+}
+
+.app-subtitle {
+    font-family: 'Permanent Marker', cursive;
+    color: rgb(36, 5, 107);
+    font-size: 24pt;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    animation-duration: 1s;
+    animation-name: slidein;
+    font-size: 36pt;
+}
+
+@keyframes slidein {
+    from {
+        margin-top: -500px;
+        /* width: 300%;  */
+    }
+    
+    to {
+        margin-left: 0%;
+        /* width: 100%; */
+    }
+}
+
+#app-subtitle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#leaderboard-outer-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#leaderboard-inner-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid;
+    border-color: rgb(36, 5, 107);
+    background-image: url('https://i.pinimg.com/originals/8e/d7/e7/8ed7e77b8ed8fe247f8254c6866bfd2c.jpg');
+    background-size: cover;
+    background-repeat: none;
+    padding: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+    padding-bottom: 30px;
+    position: absolute;
+    right: 20px; left: 20px;
+}
+
+.username-h1 {
+    font-family: 'Permanent Marker', cursive;
+    color: rgb(36, 5, 107);
+    text-align: center;
+    margin-bottom: 0px;
+    text-align: center;
+    font-size: 44pt;
+    margin-top: 20px;
+
+}
+
+.spark-score-h1 {
+    font-family: 'Bungee Shade', cursive;
+    color: rgb(36, 5, 107);
+    text-align: center;
+    font-size: 40pt;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+#ranking {
+    font-family: 'Bungee Shade', cursive;
+    font-size: 56pt;
+}
+
+.ranking-container {
+    border: solid;
+    border-color: rgb(36, 5, 107);
+    border-width: 10px;
+    border-radius: 10pt;
+    min-width: 704px;
+    max-width: 704px;
+    margin-top: 10px;
+}
+
+#link-back-home {
+    width: 170px;
+    background-color: rgb(36, 5, 107);
+    color: rgb(255, 255, 255);
+    padding: 1px 5px;
+    margin: 8px 0;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 16pt;
+    font-family: 'Permanent Marker', cursive;
+    box-shadow: 0 6px rgb(168, 168, 168);
+    align-self: flex-start;
+    margin-left: 35px;
+    text-align: center;
+    text-decoration: none;
+}
+
+#link-back-home:focus {
+    outline: none;
+}
+
+#link-back-home:hover {
+    background-color: rgb(36, 5, 107);
+}
+
+#link-back-home:active {
+  background-color: rgb(47, 0, 156);
+  box-shadow: 0 3px #666;
+  transform: translateY(4px);
+}
