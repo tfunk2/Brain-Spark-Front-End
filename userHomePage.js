@@ -31,6 +31,8 @@ const triviaQuestion = document.createElement('p')
 const checkAnswerInput = document.createElement('input')
 const leaderboardLink = document.createElement('a')
 
+triviaForm.addEventListener("submit", checkAnswer)
+
 
 fetch(`http://localhost:3000/users/${id}`)
     .then(response => response.json())
@@ -88,22 +90,18 @@ function displayNumberFacts(number_facts) {
 
 
 // display trivia
-
+let trivia
+let randomTriviaQuestion
 fetch('http://localhost:3000/trivia')
     .then(response => response.json())
-    .then(trivia => generateTriviaDropdown(trivia))
+    .then(triviaArray => generateTriviaDropdown(triviaArray))
 
-function generateTriviaDropdown(trivia) {
+function generateTriviaDropdown(triviaArray) {
+    trivia = triviaArray
     const randomTriviaIndex = Math.floor(Math.random() * 750)
-    const randomTriviaQuestion = trivia[randomTriviaIndex]
+    randomTriviaQuestion = trivia[randomTriviaIndex]
     
-    if (randomTriviaQuestion.difficulty == "easy") {
-        sparkWorthH3.innerHTML = `Worth <div class="sparks">50</div> Sparks`
-    } else if (randomTriviaQuestion.difficulty == "medium"){
-        sparkWorthH3.innerHTML = `Worth <div class="sparks">100</div> Sparks`
-    } else if (randomTriviaQuestion.difficulty == "hard") {
-        sparkWorthH3.innerHTML = `Worth <div class="sparks">200</div> Sparks`
-    }
+    defineWorth()
 
     triviaQuestion.id = "trivia-question"
     difficultyH3.id = "difficulty"
@@ -154,50 +152,56 @@ function generateTriviaDropdown(trivia) {
     triviaDropdown.append(dropdownOption1, dropdownOption2, dropdownOption3, dropdownOption4)
     triviaForm.append(triviaDropdown, checkAnswerInput)
 
-    triviaForm.addEventListener("submit", () => {
-        event.preventDefault()
-        const formData = new FormData(triviaForm)
-        const answerInput = formData.get('selected_answer')
-        function generateNewTriviaQuestion() {
-            generateTriviaDropdown(trivia)
-        }
-        console.log(answerInput)
-        if (answerInput !== randomTriviaQuestion.correct_answer) {
-            difficultyH3.remove()
-            categoryH3.remove()
-            sparkWorthH3.remove()
-            triviaQuestion.remove()
-            triviaForm.reset()
-
-            generateNewTriviaQuestion()
-            console.log("wrong")
-        } else if (answerInput === randomTriviaQuestion.correct_answer) {
-            // need to make this pop a message up saying correct answer!
-            // also need to make it change questions
-            let sparksToAdd
-            if (randomTriviaQuestion.difficulty == "easy") {
-                sparksToAdd = 50
-            } else if (randomTriviaQuestion.difficulty == "medium"){
-                sparksToAdd = 100
-            } else if (randomTriviaQuestion.difficulty == "hard") {
-                sparksToAdd = 200
-            }
-
-            fetch(`http://localhost:3000/users/${id}`)
-                .then(response => response.json())
-                .then(user => addSparkScore(user, sparksToAdd))  
-
-            triviaForm.reset()
-            generateNewTriviaQuestion()
-            
-        }
-        
-    })
+    
 }
 
-function addSparkScore(user, sparksToAdd) {
+function defineWorth () {
+    switch(randomTriviaQuestion.difficulty) {
+        case "easy": 
+            sparkWorthH3.innerHTML = `Worth <div class="sparks">50</div> Sparks`
+            break
+        case "medium":
+            sparkWorthH3.innerHTML = `Worth <div class="sparks">100</div> Sparks`
+            break
+        case "hard":
+            sparkWorthH3.innerHTML = `Worth <div class="sparks">200</div> Sparks`
+            break
+        default: 
+            console.log("defineWorth switch statement")
+    }
+}
+
+function checkAnswer(event) {
+    event.preventDefault()
+    const formData = new FormData(triviaForm)
+    const answerInput = formData.get('selected_answer')
+    
+    console.log("answer input", answerInput, randomTriviaQuestion.correct_answer)
+    if (answerInput !== randomTriviaQuestion.correct_answer) {
+        
+        console.log("wrong")
+    } else if (answerInput === randomTriviaQuestion.correct_answer) {
+        // need to make this pop a message up saying correct answer!
+        // also need to make it change questions
+        let sparksToAdd
+        if (randomTriviaQuestion.difficulty == "easy") {
+            sparksToAdd = 50
+        } else if (randomTriviaQuestion.difficulty == "medium"){
+            sparksToAdd = 100
+        } else if (randomTriviaQuestion.difficulty == "hard") {
+            sparksToAdd = 200
+        }
+
+        addSparkScore(sparksToAdd) 
+
+        
+    }
+    triviaForm.reset()
+    generateTriviaDropdown(trivia)
+}
+function addSparkScore(sparksToAdd) {
     // console.log(user, sparksToAdd)
-    totalSparks.innerText = user.lifetime_score + sparksToAdd
+    totalSparks.innerText = parseInt(totalSparks.innerText) + sparksToAdd
 
     fetch(`http://localhost:3000/users/${id}`, {
         method: "PATCH",
@@ -206,7 +210,7 @@ function addSparkScore(user, sparksToAdd) {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            lifetime_score: (user.lifetime_score + sparksToAdd)
+            lifetime_score: totalSparks.innerText
         })
     }).then(response => response.json())
     .then(console.log)
