@@ -119,8 +119,8 @@ header {
     border-color: rgb(36, 5, 107);
     border-width: 10px;
     border-radius: 10pt;
-    min-width: 704px;
-    max-width: 704px;
+    min-width: 60%;
+    max-width: 60%;
     margin-top: 10px;
 }
 

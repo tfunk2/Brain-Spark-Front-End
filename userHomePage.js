@@ -124,7 +124,7 @@ function generateTriviaDropdown(trivia) {
         randomTriviaQuestion.incorrect_answer_3
     ]
     console.log(randomTriviaQuestion)
-    console.log(answersArray)
+    // console.log(answersArray)
     function arrayShuffle(array) {
         for (let i = 3; i > 0; i-- ) {
             let newPosition = Math.floor(Math.random() * (i + 1))
@@ -158,7 +158,6 @@ function generateTriviaDropdown(trivia) {
         event.preventDefault()
         const formData = new FormData(triviaForm)
         const answerInput = formData.get('selected_answer')
-
         function generateNewTriviaQuestion() {
             generateTriviaDropdown(trivia)
         }
