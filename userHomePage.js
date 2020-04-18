@@ -4,9 +4,10 @@ const id = searchParams.get('id')
 
 
 const currentDate = new Date()
-const monthDay = currentDate.getMonth() + '/' + currentDate.getDate()
+const monthDay = (currentDate.getMonth() + 1) + '/' + currentDate.getDate()
 const currentDay = currentDate.getDate()
 const currentYear = currentDate.getFullYear()
+console.log(currentDate.getMonth() + 1)
 
 const userSection = document.querySelector('#user-section')
 const dateElement = document.querySelector('#date')
