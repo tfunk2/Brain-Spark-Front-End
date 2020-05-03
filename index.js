@@ -12,7 +12,7 @@ const previousLabel = document.getElementById('user-created-label')
 
 // Displays the random joke at the bottom of the page
 
-fetch('brain-spark-back-end.herokuapp.com/jokes/')
+fetch('http://brain-spark-back-end.herokuapp.com/jokes/')
     .then(response => response.json())
     .then(jokes => displayWelcomeJoke(jokes))
 
@@ -37,7 +37,7 @@ createUserForm.addEventListener('submit', () => {
             lifetime_score: 0
         }
 
-    fetch('brain-spark-back-end.herokuapp.com/users', {
+    fetch('http://brain-spark-back-end.herokuapp.com/users', {
         method: "POST",
         headers: {
             "Accept": "application/json",
@@ -102,7 +102,7 @@ loginForm.addEventListener('submit', () => {
     const passwordInput = formData.get('password_digest')
 
 
-    fetch('brain-spark-back-end.herokuapp.com/users/')
+    fetch('http://brain-spark-back-end.herokuapp.com/users/')
         .then(response => response.json())
         .then(users => searchByUsername(users))
 

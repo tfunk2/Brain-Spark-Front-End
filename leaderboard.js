@@ -5,7 +5,7 @@ const id = searchParams.get('id')
 const leaderboardInnerSection = document.querySelector("#leaderboard-inner-section")
 const appSubtitleContainer = document.querySelector("#app-subtitle-container")
 
-fetch('brain-spark-back-end.herokuapp.com/users')
+fetch('http://brain-spark-back-end.herokuapp.com/users')
     .then(response => response.json())
     .then(users => getTopSevenUsers(users))
 
@@ -42,7 +42,7 @@ function postTopSeven(topSeven) {
 function createLinkBackHome() {
     const linkBackToHome = document.createElement('a')
 
-    linkBackToHome.href = `brain-spark.firebaseapp.com/userHomePage.html?id=${id}`
+    linkBackToHome.href = `http://brain-spark.firebaseapp.com/userHomePage.html?id=${id}`
     linkBackToHome.id = "link-back-home"
     linkBackToHome.innerText = "Home"
 
