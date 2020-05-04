@@ -5,7 +5,7 @@ const id = searchParams.get('id')
 const leaderboardInnerSection = document.querySelector("#leaderboard-inner-section")
 const appSubtitleContainer = document.querySelector("#app-subtitle-container")
 
-fetch('http://brain-spark-back-end.herokuapp.com/users')
+fetch('https://brain-spark-back-end.herokuapp.com/users')
     .then(response => response.json())
     .then(users => getTopSevenUsers(users))
 

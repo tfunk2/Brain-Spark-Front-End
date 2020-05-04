@@ -35,7 +35,7 @@ const leaderboardLink = document.createElement('a')
 triviaForm.addEventListener("submit", checkAnswer)
 
 
-fetch(`http://brain-spark-back-end.herokuapp.com/users/${id}`)
+fetch(`https://brain-spark-back-end.herokuapp.com/users/${id}`)
     .then(response => response.json())
     .then(user => displayUserInfo(user))
 
@@ -50,7 +50,7 @@ function displayUserInfo(user) {
     totalSparks.innerText = user.lifetime_score
     totalSparks.id = "total-sparks"
     leaderboardLink.innerText = "Leaderboard"
-    leaderboardLink.href = `http://brain-spark.firebaseapp.com/leaderboard.html?id=${id}`
+    leaderboardLink.href = `https://brain-spark.firebaseapp.com/leaderboard.html?id=${id}`
     leaderboardLink.id = "leaderboard-link"
 
     userWelcomeContainer.append(userWelcome, sparkLabel, totalSparks, leaderboardLink)
@@ -59,7 +59,7 @@ function displayUserInfo(user) {
 
 // display date facts
 
-fetch('http://brain-spark-back-end.herokuapp.com/date_facts')
+fetch('https://brain-spark-back-end.herokuapp.com/date_facts')
     .then(response => response.json())
     .then(date_facts => displayDateFacts(date_facts))
 
@@ -75,7 +75,7 @@ function displayDateFacts(date_facts) {
 
 // display number facts 
 
-fetch('http://brain-spark-back-end.herokuapp.com/number_facts')
+fetch('https://brain-spark-back-end.herokuapp.com/number_facts')
     .then(response => response.json())
     .then(number_facts => displayNumberFacts(number_facts))
 
@@ -93,7 +93,7 @@ function displayNumberFacts(number_facts) {
 // display trivia
 let trivia
 let randomTriviaQuestion
-fetch('http://brain-spark-back-end.herokuapp.com/trivia')
+fetch('https://brain-spark-back-end.herokuapp.com/trivia')
     .then(response => response.json())
     .then(triviaArray => generateTriviaDropdown(triviaArray))
 
@@ -212,7 +212,7 @@ function addSparkScore(sparksToAdd) {
     // console.log(user, sparksToAdd)
     totalSparks.innerText = parseInt(totalSparks.innerText) + sparksToAdd
 
-    fetch(`http://brain-spark-back-end.herokuapp.com/users/${id}`, {
+    fetch(`https://brain-spark-back-end.herokuapp.com/users/${id}`, {
         method: "PATCH",
         headers: {
             "Accept": "application/json",
