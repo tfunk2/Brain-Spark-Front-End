@@ -42,7 +42,7 @@ function postTopSeven(topSeven) {
 function createLinkBackHome() {
     const linkBackToHome = document.createElement('a')
 
-    linkBackToHome.href = `http://brain-spark.firebaseapp.com/userHomePage.html?id=${id}`
+    linkBackToHome.href = `https://brain-spark.firebaseapp.com/userHomePage.html?id=${id}`
     linkBackToHome.id = "link-back-home"
     linkBackToHome.innerText = "Home"
 
